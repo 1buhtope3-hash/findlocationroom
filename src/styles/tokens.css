@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Дизайн-токены VPN Finder
+   Тёмная тема — по умолчанию (:root). Светлая — только подмена значений
+   на [data-theme="light"]. Никаких хардкод-цветов в компонентах.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* ---------- Поверхности (тёмная, холодный нейтральный) ---------- */
+  --bg-base: hsl(222 20% 6%);          /* #0C0E12 */
+  --bg-surface: hsl(222 17% 9%);       /* #13161B */
+  --bg-surface-2: hsl(222 15% 12%);    /* #1A1D23 */
+  --bg-elevated: hsl(222 15% 14%);     /* #1E2128 — дропдауны, тосты */
+  --bg-hover: hsl(222 14% 17%);
+  --bg-overlay: hsl(222 30% 3% / 0.6);
+
+  /* ---------- Рамки ---------- */
+  --border-subtle: hsl(222 14% 15%);
+  --border-default: hsl(222 11% 22%);
+  --border-strong: hsl(222 9% 44%);
+
+  /* ---------- Текст ---------- */
+  --text-primary: hsl(220 25% 96%);
+  --text-secondary: hsl(220 12% 74%);
+  --text-muted: hsl(220 9% 60%);
+  --text-inverse: hsl(222 25% 8%);
+
+  /* ---------- Акцент: «Iris» — холодный индиго-фиолетовый (защита/VPN) ---------- */
+  --accent: hsl(246 100% 76%);
+  --accent-hover: hsl(246 100% 82%);
+  --accent-subtle: hsl(246 100% 76% / 0.12);
+  --accent-border: hsl(246 100% 76% / 0.35);
+  --accent-foreground: hsl(248 55% 12%);
+  --accent-text: hsl(246 100% 82%);     /* акцент для текста/ссылок */
+
+  /* ---------- Статусы ---------- */
+  --status-allowed: hsl(152 62% 58%);
+  --status-allowed-bg: hsl(152 62% 50% / 0.11);
+  --status-allowed-border: hsl(152 62% 50% / 0.34);
+
+  --status-blocked: hsl(0 88% 72%);
+  --status-blocked-bg: hsl(0 88% 62% / 0.11);
+  --status-blocked-border: hsl(0 88% 62% / 0.34);
+
+  --status-alt-domain: hsl(38 95% 62%);
+  --status-alt-domain-bg: hsl(38 95% 55% / 0.11);
+  --status-alt-domain-border: hsl(38 95% 55% / 0.36);
+
+  --status-unknown: hsl(220 10% 64%);
+  --status-unknown-bg: hsl(220 10% 60% / 0.10);
+  --status-unknown-border: hsl(220 10% 60% / 0.30);
+
+  /* ---------- Фокус, тени ---------- */
+  --focus-ring: hsl(246 100% 78%);
+  --focus-ring-offset: var(--bg-base);
+  --shadow-sm: 0 1px 2px hsl(222 40% 2% / 0.5);
+  --shadow-md: 0 4px 12px -2px hsl(222 40% 2% / 0.55), 0 0 0 1px hsl(222 20% 100% / 0.02);
+  --shadow-lg: 0 18px 40px -8px hsl(222 40% 2% / 0.7), 0 0 0 1px hsl(222 20% 100% / 0.03);
+  --glow-accent: 0 0 0 1px var(--accent-border), 0 8px 30px -6px hsl(246 100% 70% / 0.35);
+  --hero-glow: hsl(246 100% 70% / 0.10);
+
+  /* ---------- Радиусы ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+
+  /* ---------- Отступы (кратно 4px) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---------- Типографика ---------- */
+  --font-sans: "Inter", "Inter var", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-flag: "Twemoji Country Flags", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+
+  --font-size-12: 0.75rem;
+  --font-size-13: 0.8125rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-32: 2rem;
+  --font-size-40: 2.5rem;
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.5;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-caps: 0.06em;
+
+  /* ---------- Движение ---------- */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur: 160ms;
+  --dur-slow: 200ms;
+
+  /* ---------- Раскладка ---------- */
+  --container: 1280px;
+  --gutter: clamp(12px, 4vw, 32px);
+  --header-h: 64px;
+}
+
+/* ==========================================================================
+   Светлая тема — собственная, не инверсия: тёплая бумага + графитовый текст,
+   статусы темнее для контраста на белом.
+   ========================================================================== */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-base: hsl(220 22% 96.5%);
+  --bg-surface: hsl(0 0% 100%);
+  --bg-surface-2: hsl(220 22% 97.5%);
+  --bg-elevated: hsl(0 0% 100%);
+  --bg-hover: hsl(222 25% 93.5%);
+  --bg-overlay: hsl(222 30% 10% / 0.35);
+
+  --border-subtle: hsl(222 20% 91%);
+  --border-default: hsl(222 16% 85%);
+  --border-strong: hsl(222 12% 55%);
+
+  --text-primary: hsl(222 28% 11%);
+  --text-secondary: hsl(222 12% 32%);
+  --text-muted: hsl(222 9% 43%);
+  --text-inverse: hsl(0 0% 100%);
+
+  --accent: hsl(248 72% 54%);
+  --accent-hover: hsl(248 72% 47%);
+  --accent-subtle: hsl(248 72% 54% / 0.09);
+  --accent-border: hsl(248 72% 54% / 0.3);
+  --accent-foreground: hsl(0 0% 100%);
+  --accent-text: hsl(248 65% 48%);
+
+  --status-allowed: hsl(154 75% 25%);
+  --status-allowed-bg: hsl(152 60% 42% / 0.10);
+  --status-allowed-border: hsl(152 60% 36% / 0.32);
+
+  --status-blocked: hsl(0 72% 42%);
+  --status-blocked-bg: hsl(0 80% 55% / 0.08);
+  --status-blocked-border: hsl(0 72% 50% / 0.30);
+
+  --status-alt-domain: hsl(28 92% 31%);
+  --status-alt-domain-bg: hsl(38 95% 50% / 0.12);
+  --status-alt-domain-border: hsl(32 90% 42% / 0.34);
+
+  --status-unknown: hsl(222 9% 40%);
+  --status-unknown-bg: hsl(222 10% 50% / 0.08);
+  --status-unknown-border: hsl(222 10% 50% / 0.26);
+
+  --focus-ring: hsl(248 72% 54%);
+  --shadow-sm: 0 1px 2px hsl(222 30% 20% / 0.06);
+  --shadow-md: 0 4px 14px -4px hsl(222 30% 20% / 0.12), 0 1px 2px hsl(222 30% 20% / 0.05);
+  --shadow-lg: 0 20px 44px -12px hsl(222 30% 20% / 0.22), 0 2px 6px hsl(222 30% 20% / 0.06);
+  --glow-accent: 0 0 0 1px var(--accent-border), 0 8px 24px -8px hsl(248 72% 54% / 0.35);
+  --hero-glow: hsl(248 72% 60% / 0.08);
+}
